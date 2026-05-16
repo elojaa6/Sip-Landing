@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — SIP</title>
+  <link rel="icon" href="sip-icon-1024.png" type="image/png">
+  <meta name="description" content="Terms of Service for SIP — Smart Intake Progress mobile application.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:    #0B111F;
+      --border:  rgba(255,255,255,0.08);
+      --blue:    #00A3FF;
+      --amber:   #F59E0B;
+      --white:   #FFFFFF;
+      --w85: rgba(255,255,255,0.85);
+      --w60: rgba(255,255,255,0.60);
+      --w40: rgba(255,255,255,0.40);
+      --w08: rgba(255,255,255,0.08);
+      --w05: rgba(255,255,255,0.05);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--navy); color: var(--w85);
+      -webkit-font-smoothing: antialiased; line-height: 1.7;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(11,17,31,.9);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .hdr { max-width:1100px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .logo { display:flex; align-items:center; gap:9px; text-decoration:none; }
+    .logo span { font-size:18px; font-weight:900; color:var(--white); letter-spacing:-.4px; }
+    .back { font-size:13px; font-weight:500; color:var(--w40); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .15s; }
+    .back:hover { color:var(--w85); }
+
+    .doc { max-width:740px; margin:56px auto 80px; padding:0 24px; }
+    .doc-head { margin-bottom:48px; }
+    .lbl { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--blue); margin-bottom:12px; }
+    h1 { font-size:clamp(30px,5vw,44px); font-weight:800; color:var(--white); letter-spacing:-.8px; line-height:1.1; margin-bottom:16px; }
+    .meta { font-size:13px; color:var(--w40); }
+
+    .sec { margin-bottom:44px; }
+    .sec h2 { font-size:17px; font-weight:700; color:var(--white); letter-spacing:-.2px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--w08); }
+    .sec h3 { font-size:15px; font-weight:600; color:var(--w85); margin:16px 0 8px; }
+    .sec p  { font-size:15px; color:var(--w60); margin-bottom:12px; line-height:1.75; }
+    .sec p:last-child { margin-bottom:0; }
+    .sec ul, .sec ol { padding-left:20px; color:var(--w60); font-size:15px; line-height:1.75; }
+    .sec li { margin-bottom:8px; }
+    .sec li:last-child { margin-bottom:0; }
+    .sec strong { color:var(--w85); }
+
+    /* info card */
+    .card { background:var(--w05); border:1px solid rgba(0,163,255,.15); border-radius:14px; padding:18px 20px; margin-top:16px; }
+    .card p { margin:0; font-size:14px; color:var(--w60); line-height:1.65; }
+    .card strong { color:var(--w85); }
+
+    /* Medical disclaimer — amber */
+    .disclaimer {
+      background: rgba(245,158,11,.07); border:1px solid rgba(245,158,11,.30);
+      border-radius:16px; padding:20px 22px; margin:16px 0;
+      display:flex; gap:14px; align-items:flex-start;
+    }
+    .disc-icon {
+      flex-shrink:0; width:36px; height:36px; border-radius:10px;
+      background:rgba(245,158,11,.12); display:flex; align-items:center;
+      justify-content:center; font-size:18px; margin-top:2px;
+    }
+    .disclaimer h3 { font-size:14px; font-weight:700; color:var(--amber); letter-spacing:.2px; margin-bottom:6px; }
+    .disclaimer p  { font-size:14px; color:rgba(255,255,255,.65); line-height:1.65; margin:0; }
+
+    /* AS IS callout */
+    .asis { background:var(--w05); border:1px solid var(--w08); border-radius:14px; padding:18px 20px; margin-top:16px; }
+    .asis p { font-size:13px; color:var(--w40); line-height:1.7; margin:0; font-style:italic; }
+
+    /* platform tiles */
+    .plat-list { list-style:none; padding:0; margin-top:16px; }
+    .plat-list li { display:flex; align-items:flex-start; gap:12px; padding:14px 0; border-bottom:1px solid var(--w08); }
+    .plat-list li:last-child { border-bottom:none; }
+    .plat-badge { flex-shrink:0; width:36px; height:36px; border-radius:10px; background:var(--w08); display:flex; align-items:center; justify-content:center; font-size:18px; }
+    .plat-name { font-size:14px; font-weight:600; color:var(--w85); margin-bottom:3px; }
+    .plat-desc { font-size:13px; color:var(--w40); line-height:1.55; }
+    .plat-link { font-size:12px; color:var(--blue); text-decoration:none; display:inline-block; margin-top:4px; }
+    .plat-link:hover { text-decoration:underline; }
+
+    /* definitions table */
+    .def-list { list-style:none; padding:0; }
+    .def-list li { padding:10px 0; border-bottom:1px solid var(--w08); font-size:14px; color:var(--w60); line-height:1.6; }
+    .def-list li:last-child { border-bottom:none; }
+    .def-term { font-weight:700; color:var(--w85); }
+
+    footer { border-top:1px solid var(--border); padding:28px 24px; text-align:center; }
+    footer p { font-size:13px; color:var(--w40); line-height:1.6; }
+    footer a { color:var(--blue); text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+
+    @media (max-width:600px) {
+      .doc { margin-top:36px; }
+      .disclaimer { flex-direction:column; gap:10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hdr">
+    <a href="index.html" class="logo">
+      <img src="sip-icon-1024.png" width="28" height="28" style="border-radius:7px;display:block;" alt="SIP">
+      <span>SIP</span>
+    </a>
+    <a href="index.html" class="back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to home
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="doc">
+    <div class="doc-head">
+      <p class="lbl">Legal</p>
+      <h1>Terms of Service</h1>
+      <p class="meta">Effective date: May 13, 2026 &nbsp;·&nbsp; Last updated: May 13, 2026</p>
+    </div>
+
+    <!-- 1. Interpretation -->
+    <section class="sec">
+      <h2>1. Interpretation</h2>
+      <p>
+        Words with an initial capital letter have meanings defined under the following conditions.
+        The following definitions shall have the same meaning regardless of whether they appear in
+        singular or in plural.
+      </p>
+    </section>
+
+    <!-- 2. Definitions -->
+    <section class="sec">
+      <h2>2. Definitions</h2>
+      <p>For the purposes of these Terms and Conditions:</p>
+      <ul class="def-list">
+        <li><span class="def-term">Application</span> — the software program provided by the Company downloaded by You on any electronic device, named <em>SIP — Smart Intake Progress</em>.</li>
+        <li><span class="def-term">Application Store</span> — the digital distribution service operated by Apple Inc. (Apple App Store) or Google LLC (Google Play Store).</li>
+        <li><span class="def-term">Company</span> (referred to as "the Company", "We", "Us", or "Our") — Elvis Loja, Ecuador.</li>
+        <li><span class="def-term">Country</span> — Ecuador.</li>
+        <li><span class="def-term">Device</span> — any device that can access the Service, such as a smartphone or tablet.</li>
+        <li><span class="def-term">Free Tier</span> — the version of the Application available without payment, with limited features.</li>
+        <li><span class="def-term">Service</span> — the Application.</li>
+        <li><span class="def-term">SIP Pro</span> — the paid subscription tier of the Application that unlocks premium features.</li>
+        <li><span class="def-term">Terms and Conditions</span> (also referred to as "Terms") — these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service.</li>
+        <li><span class="def-term">Third-party Service</span> — any services or content provided by a third party that may be displayed, included, or made available by the Service.</li>
+        <li><span class="def-term">You</span> — the individual accessing or using the Service, or the company or other legal entity on behalf of which such individual is accessing or using the Service.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Acknowledgment -->
+    <section class="sec">
+      <h2>3. Acknowledgment</h2>
+      <p>
+        These Terms and Conditions govern the use of the Service and form the agreement between You and the
+        Company. These Terms set out the rights and obligations of all users with respect to the use of the Service.
+      </p>
+      <p>
+        Your access to and use of the Service is conditioned on Your acceptance of and compliance with these
+        Terms. By accessing or using the Service You agree to be bound by these Terms. If You disagree with
+        any part of these Terms, You may not access the Service.
+      </p>
+      <p>
+        <strong>You represent that you are at least 13 years of age.</strong> The Company does not permit
+        those under 13 to use the Service. If you are between 13 and 18 years of age, you must have the
+        permission of a parent or guardian.
+      </p>
+      <p>
+        Your access to and use of the Service is also conditioned on Your acceptance of and compliance
+        with the Privacy Policy of the Company. Please read it carefully before using the Service.
+      </p>
+    </section>
+
+    <!-- 4. Medical Disclaimer -->
+    <section class="sec">
+      <h2>4. Medical Disclaimer</h2>
+
+      <div class="disclaimer" role="alert">
+        <div class="disc-icon" aria-hidden="true">⚠️</div>
+        <div>
+          <h3>SIP IS NOT A MEDICAL DEVICE</h3>
+          <p>
+            SIP is an <strong>informational and fitness-tracking tool only</strong>. It is not a medical
+            device, does not provide medical advice, and is <strong>not a substitute for professional
+            medical guidance, diagnosis, or treatment</strong>. Hydration recommendations generated by SIP
+            are based on general population formulas and self-reported data — they are not diagnostic,
+            therapeutic, or clinical in nature.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        If you have or suspect you have a medical condition affecting fluid balance — including but not
+        limited to kidney disease, heart conditions, hyponatremia, diabetes, or any condition requiring
+        medically supervised fluid intake — <strong>consult a qualified healthcare professional before
+        using SIP's recommendations to guide your fluid intake.</strong>
+      </p>
+      <p>
+        The Company assumes no liability for any health-related consequences arising from following or
+        deviating from hydration recommendations generated by the App. You assume full responsibility
+        for all decisions related to your health and hydration.
+      </p>
+    </section>
+
+    <!-- 5. Service Description -->
+    <section class="sec">
+      <h2>5. Description of Service</h2>
+      <p>SIP provides tools to help you track daily fluid intake, set personalized hydration goals, and receive smart reminders. The App is offered in two tiers:</p>
+      <ul>
+        <li><strong>SIP Free:</strong> Core hydration tracking, basic beverage library (up to 3 custom beverages), and standard smart reminders.</li>
+        <li><strong>SIP Pro:</strong> All Free features plus Smart Climate Adjustment, Performance Mode (wearable sync), unlimited custom beverages, full statistics and heatmap history, and advanced CSV data export.</li>
+      </ul>
+      <p>
+        We reserve the right to modify, suspend, or discontinue any feature of the App at any time without
+        prior notice. We will not be liable to You or any third party for any modification, suspension,
+        or discontinuance.
+      </p>
+    </section>
+
+    <!-- 6. SIP Pro Subscriptions -->
+    <section class="sec">
+      <h2>6. SIP Pro Subscriptions &amp; Billing</h2>
+      <p>
+        SIP Pro is offered as an auto-renewing monthly or annual subscription, purchased exclusively through
+        the applicable Application Store. <strong>All billing, payment processing, refunds, and subscription
+        management are handled entirely by the Application Store — not by the Company.</strong>
+      </p>
+
+      <ul class="plat-list">
+        <li>
+          <div class="plat-badge">🍎</div>
+          <div>
+            <div class="plat-name">Apple App Store (iOS)</div>
+            <div class="plat-desc">
+              Subject to Apple's Media Services Terms and Conditions. Manage or cancel your subscription
+              in <em>iOS Settings → [Your Name] → Subscriptions</em>. Refund requests must be submitted
+              directly to Apple at reportaproblem.apple.com.
+            </div>
+            <a class="plat-link" href="https://www.apple.com/legal/internet-services/itunes/" target="_blank" rel="noopener noreferrer">Apple Media Services Terms ↗</a>
+          </div>
+        </li>
+        <li>
+          <div class="plat-badge">🤖</div>
+          <div>
+            <div class="plat-name">Google Play Store (Android)</div>
+            <div class="plat-desc">
+              Subject to Google Play's Terms of Service. Manage or cancel your subscription in
+              <em>Google Play → Subscriptions</em>. Refund requests must be submitted directly to
+              Google within their applicable refund window.
+            </div>
+            <a class="plat-link" href="https://play.google.com/about/play-terms/index.html" target="_blank" rel="noopener noreferrer">Google Play Terms of Service ↗</a>
+          </div>
+        </li>
+      </ul>
+
+      <p>
+        Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current
+        billing period. The Company does not issue refunds for partial subscription periods.
+      </p>
+      <p>
+        Free trial periods, when offered, are subject to the terms presented at the time of subscription.
+        Any unused portion of a free trial is forfeited upon upgrade to a paid plan.
+      </p>
+    </section>
+
+    <!-- 7. User Accounts -->
+    <section class="sec">
+      <h2>7. User Accounts</h2>
+      <p>
+        SIP may be used without an account for local-only tracking. Creating an account via Firebase
+        Authentication enables cloud sync and cross-device access.
+      </p>
+      <ul>
+        <li>You are responsible for maintaining the confidentiality of your account credentials and for all activity under your account.</li>
+        <li>You must provide accurate and current information when creating your profile.</li>
+        <li>You may delete your account at any time via <em>Settings → Delete Account</em>. Account deletion is permanent and irreversible — all cloud data is immediately and permanently erased.</li>
+        <li>We reserve the right to suspend or terminate accounts that violate these Terms, with or without prior notice.</li>
+      </ul>
+    </section>
+
+    <!-- 8. Links to Other Websites -->
+    <section class="sec">
+      <h2>8. Links to Third-Party Websites</h2>
+      <p>
+        The Service may contain links to third-party websites or services that are not owned or controlled
+        by the Company. We have no control over and assume no responsibility for the content, privacy
+        policies, or practices of any third-party websites or services.
+      </p>
+      <p>
+        We strongly advise You to read the terms and conditions and privacy policies of any third-party
+        websites or services that You visit.
+      </p>
+    </section>
+
+    <!-- 9. Acceptable Use -->
+    <section class="sec">
+      <h2>9. Acceptable Use</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Reverse engineer, decompile, disassemble, or attempt to derive the source code of the App.</li>
+        <li>Use the App in any unlawful manner or for any unlawful purpose.</li>
+        <li>Transmit harmful, fraudulent, defamatory, or abusive content through the App.</li>
+        <li>Attempt to gain unauthorized access to the App's backend systems or other users' data.</li>
+        <li>Automate, scrape, or abuse the in-app feedback submission system.</li>
+        <li>Use the App in any manner that could damage, disable, overburden, or impair the service infrastructure.</li>
+      </ul>
+    </section>
+
+    <!-- 10. Termination -->
+    <section class="sec">
+      <h2>10. Termination</h2>
+      <p>
+        We may terminate or suspend Your access immediately, without prior notice or liability, for any
+        reason, including without limitation if You breach these Terms.
+      </p>
+      <p>
+        Upon termination, Your right to use the Service will immediately cease. If You wish to terminate
+        Your account, You may simply discontinue using the Service or use the in-app account deletion flow.
+      </p>
+    </section>
+
+    <!-- 11. Intellectual Property -->
+    <section class="sec">
+      <h2>11. Intellectual Property</h2>
+      <p>
+        The Service and its original content, features, and functionality are and will remain the exclusive
+        property of Elvis Loja and its licensors. The following are protected under applicable copyright,
+        trademark, and design laws:
+      </p>
+      <ul>
+        <li>The <strong>SIP</strong> name, wordmark, and drop-shaped logomark ("The Drop").</li>
+        <li>All source code, algorithms, and data structures comprising the App.</li>
+        <li>The Deep Navy / Electric Blue design language, glassmorphism card aesthetic, and Elite typography hierarchy.</li>
+        <li>All in-app text, onboarding flows, and marketing copy.</li>
+      </ul>
+      <p>
+        You are granted a limited, non-exclusive, non-transferable, revocable license to use the App
+        for personal, non-commercial purposes only. No rights are transferred to You beyond this license.
+      </p>
+    </section>
+
+    <!-- 12. Limitation of Liability -->
+    <section class="sec">
+      <h2>12. Limitation of Liability</h2>
+      <p>
+        Notwithstanding any damages that You might incur, the entire liability of the Company and any
+        of its suppliers under any provision of these Terms and Your exclusive remedy for all of the
+        foregoing shall be limited to the amount actually paid by You through the Service, or
+        <strong>100 USD</strong> if You haven't purchased anything through the Service.
+      </p>
+      <p>
+        To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers
+        be liable for any special, incidental, indirect, or consequential damages whatsoever (including,
+        but not limited to, damages for loss of profits, loss of data or other information, for business
+        interruption, for personal injury, loss of privacy arising out of or in any way related to the
+        use of or inability to use the Service).
+      </p>
+      <p>
+        Some jurisdictions do not allow the exclusion of implied warranties or limitation of liability
+        for incidental or consequential damages, which means some of the above limitations may not apply.
+        In these jurisdictions, each party's liability will be limited to the greatest extent permitted by law.
+      </p>
+    </section>
+
+    <!-- 13. AS IS Disclaimer -->
+    <section class="sec">
+      <h2>13. "AS IS" and "AS AVAILABLE" Disclaimer</h2>
+      <p>
+        The Service is provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects
+        without warranty of any kind.
+      </p>
+      <div class="asis">
+        <p>
+          TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW, THE COMPANY, ON ITS OWN BEHALF AND ON
+          BEHALF OF ITS AFFILIATES AND THEIR RESPECTIVE LICENSORS AND SERVICE PROVIDERS, EXPRESSLY
+          DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, WITH RESPECT TO
+          THE SERVICE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+          PURPOSE, TITLE AND NON-INFRINGEMENT, AND WARRANTIES THAT MAY ARISE OUT OF COURSE OF DEALING,
+          COURSE OF PERFORMANCE, USAGE OR TRADE PRACTICE. WITHOUT LIMITATION TO THE FOREGOING, THE
+          COMPANY PROVIDES NO WARRANTY OR UNDERTAKING, AND MAKES NO REPRESENTATION OF ANY KIND THAT
+          THE SERVICE WILL MEET YOUR REQUIREMENTS, ACHIEVE ANY INTENDED RESULTS, BE COMPATIBLE OR WORK
+          WITH ANY OTHER SOFTWARE, APPLICATIONS, SYSTEMS OR SERVICES, OPERATE WITHOUT INTERRUPTION,
+          MEET ANY PERFORMANCE OR RELIABILITY STANDARDS OR BE ERROR FREE OR THAT ANY ERRORS OR DEFECTS
+          CAN OR WILL BE CORRECTED.
+        </p>
+      </div>
+      <p style="margin-top:16px;">
+        Without limiting the foregoing, neither the Company nor any provider makes any representation
+        or warranty of any kind, express or implied: (i) as to the operation or availability of the
+        Service, or the information, content, and materials or products included thereon; (ii) that the
+        Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency
+        of any information or content provided through the Service; or (iv) that the Service, its servers,
+        the content, or emails sent from or on behalf of the Company are free of viruses, scripts, trojan
+        horses, worms, malware, timebombs or other harmful components.
+      </p>
+    </section>
+
+    <!-- 14. Governing Law -->
+    <section class="sec">
+      <h2>14. Governing Law</h2>
+      <p>
+        The laws of the Country (Ecuador), excluding its conflict of law rules, shall govern these Terms
+        and Your use of the Service. Your use of the Application may also be subject to other local,
+        state, national, or international laws.
+      </p>
+    </section>
+
+    <!-- 15. Disputes Resolution -->
+    <section class="sec">
+      <h2>15. Disputes Resolution</h2>
+      <p>
+        If You have any concern or dispute about the Service, You agree to first try to resolve the
+        dispute informally by contacting the Company at
+        <a href="mailto:elvisloja@gmail.com" style="color:var(--blue);">elvisloja@gmail.com</a>.
+      </p>
+    </section>
+
+    <!-- 16. For EU Users -->
+    <section class="sec">
+      <h2>16. For European Union (EU) Users</h2>
+      <p>
+        If You are a European Union consumer, you will benefit from any mandatory provisions of the law
+        of the country in which You are resident.
+      </p>
+      <p>
+        Nothing in these Terms limits or excludes the mandatory consumer protection rights you are entitled
+        to under the laws of your EU member state. These Terms do not override or limit such rights in any way.
+      </p>
+    </section>
+
+    <!-- 17. United States Legal Compliance -->
+    <section class="sec">
+      <h2>17. United States Legal Compliance</h2>
+      <p>
+        You represent and warrant that (i) You are not located in a country that is subject to the United
+        States government embargo, or that has been designated by the United States government as a
+        "terrorist supporting" country, and (ii) You are not listed on any United States government list
+        of prohibited or restricted parties.
+      </p>
+    </section>
+
+    <!-- 18. Severability -->
+    <section class="sec">
+      <h2>18. Severability</h2>
+      <p>
+        If any provision of these Terms is held to be unenforceable or invalid, such provision will be
+        changed and interpreted to accomplish the objectives of that provision to the greatest extent
+        possible under applicable law and the remaining provisions will continue in full force and effect.
+      </p>
+    </section>
+
+    <!-- 19. Waiver -->
+    <section class="sec">
+      <h2>19. Waiver</h2>
+      <p>
+        Except as provided herein, the failure to exercise a right or to require performance of an
+        obligation under these Terms shall not effect a party's ability to exercise such right or require
+        such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of
+        any subsequent breach.
+      </p>
+    </section>
+
+    <!-- 20. Changes to Terms -->
+    <section class="sec">
+      <h2>20. Changes to These Terms</h2>
+      <p>
+        We reserve the right, at Our sole discretion, to modify or replace these Terms at any time.
+        <strong>If a revision is material, We will make reasonable efforts to provide at least 30 days'
+        notice</strong> prior to any new terms taking effect by updating the "Last updated" date at the
+        top of this page and, for significant changes, by posting a prominent notice within the App.
+      </p>
+      <p>
+        What constitutes a material change will be determined at Our sole discretion. By continuing to
+        access or use Our Service after those revisions become effective, You agree to be bound by the
+        revised terms. If You do not agree to the new terms, in whole or in part, please stop using the
+        Service.
+      </p>
+    </section>
+
+    <!-- 21. Contact -->
+    <section class="sec">
+      <h2>21. Contact Us</h2>
+      <p>If you have any questions about these Terms and Conditions, you can contact us:</p>
+      <div class="card">
+        <p>
+          <strong>Elvis Loja — SIP Developer</strong><br>
+          Email: <a href="mailto:elvisloja@gmail.com" style="color:var(--blue);text-decoration:none;">elvisloja@gmail.com</a><br>
+          We aim to respond to all inquiries within 30 days.
+        </p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <p>
+    <a href="index.html">SIP</a> &nbsp;·&nbsp;
+    <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    © 2026 Elvis Loja. All rights reserved.
+  </p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIP — Precision Hydration for Elite Athletes</title>
+  <meta name="description" content="Recalibrate your performance with smart hydration intelligence. Real-time climate, activity, and wearable data — unified in SIP.">
+  <meta property="og:title"       content="SIP — Precision Hydration for Elite Athletes">
+  <meta property="og:description" content="Smart Intake Progress. Hydrate with precision. Perform at your peak.">
+  <meta property="og:type"        content="website">
+  <meta name="theme-color"        content="#0B111F">
+
+  <link rel="icon" href="sip-icon-1024.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0B111F;
+      --navy-card:  #1A2235;
+      --blue-start: #0066FF;
+      --blue-end:   #00A3FF;
+      --white:      #FFFFFF;
+      --w80:  rgba(255,255,255,0.80);
+      --w55:  rgba(255,255,255,0.55);
+      --w35:  rgba(255,255,255,0.35);
+      --w12:  rgba(255,255,255,0.12);
+      --w08:  rgba(255,255,255,0.08);
+      --w06:  rgba(255,255,255,0.06);
+      --w04:  rgba(255,255,255,0.04);
+      --glow: rgba(0,163,255,0.28);
+      --bb:   rgba(0,163,255,0.16);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--navy);
+      color: var(--w80);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    /* ─── layout helpers ─── */
+    .wrap    { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .wrap-sm { max-width:  720px; margin: 0 auto; padding: 0 24px; }
+
+    .gradient-text {
+      background: linear-gradient(95deg, var(--blue-start), var(--blue-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .rule {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bb), transparent);
+      margin: 0;
+    }
+
+    /* ─── buttons ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      border-radius: 50px; padding: 14px 28px;
+      font-size: 15px; font-weight: 700; letter-spacing: 0.2px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform .18s, box-shadow .18s, background .18s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(95deg, var(--blue-start), var(--blue-end));
+      color: var(--white);
+      box-shadow: 0 8px 28px var(--glow);
+    }
+    .btn-primary:hover { box-shadow: 0 12px 36px rgba(0,163,255,.48); }
+    .btn-outline {
+      background: var(--w04);
+      border: 1px solid var(--w12);
+      color: var(--white);
+    }
+    .btn-outline:hover { background: var(--w08); border-color: rgba(0,163,255,.35); }
+
+    /* ─── header ─── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11,17,31,.88);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--w06);
+    }
+    .header-row {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo img { width: 32px; height: 32px; border-radius: 8px; display: block; }
+    .logo-name { font-size: 20px; font-weight: 900; color: var(--white); letter-spacing: -0.5px; }
+    nav { display: flex; align-items: center; gap: 4px; }
+    nav a {
+      font-size: 14px; font-weight: 500; color: var(--w55);
+      text-decoration: none; padding: 6px 14px; border-radius: 8px;
+      transition: color .15s, background .15s;
+    }
+    nav a:hover { color: var(--white); background: var(--w06); }
+    nav a.cta {
+      color: var(--blue-end); font-weight: 600;
+      border: 1px solid rgba(0,163,255,.25);
+    }
+    nav a.cta:hover { background: rgba(0,163,255,.08); border-color: rgba(0,163,255,.5); }
+    .nav-social { display: flex; align-items: center; gap: 4px; margin-left: 8px; }
+    .nav-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px; padding: 0;
+      color: var(--w80); text-decoration: none;
+      transition: color .15s, background .15s;
+    }
+    .nav-social a:hover { color: var(--white); background: var(--w06); }
+
+    /* ─── lang switcher ─── */
+    .lang-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 700; letter-spacing: .8px;
+      color: var(--w55); background: var(--w04);
+      border: 1px solid var(--w08); border-radius: 8px;
+      padding: 5px 10px; cursor: pointer; margin-left: 6px;
+      transition: color .15s, background .15s, border-color .15s;
+      user-select: none;
+    }
+    .lang-btn:hover { color: var(--white); background: var(--w08); border-color: rgba(0,163,255,.3); }
+
+    /* ─── hero ─── */
+    .hero {
+      padding: 108px 24px 80px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 50% at 50% -5%, rgba(0,163,255,.13) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,163,255,.07); border: 1px solid rgba(0,163,255,.22);
+      border-radius: 50px; padding: 6px 16px; margin-bottom: 30px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue-end); box-shadow: 0 0 8px var(--blue-end);
+      animation: pdot 2.8s ease-in-out infinite;
+    }
+    @keyframes pdot {
+      0%,100% { opacity:1; box-shadow: 0 0 8px var(--blue-end); }
+      50%      { opacity:.5; box-shadow: 0 0 16px var(--blue-end); }
+    }
+    .eyebrow-text { font-size: 12px; font-weight: 700; color: var(--blue-end); letter-spacing: 1.2px; text-transform: uppercase; }
+    h1 {
+      font-size: clamp(42px, 7.8vw, 74px);
+      font-weight: 900; line-height: 1.03; letter-spacing: -2px;
+      color: var(--white); margin-bottom: 20px;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.2vw, 19px); color: var(--w55);
+      line-height: 1.65; max-width: 520px; margin: 0 auto 46px;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+
+    /* ─── features ─── */
+    .features { padding: 88px 24px; }
+    .sec-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+      color: var(--blue-end); text-transform: uppercase;
+      text-align: center; margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+      color: var(--white); letter-spacing: -0.8px;
+      text-align: center; margin-bottom: 52px;
+    }
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+    .feat-card {
+      background: var(--navy-card); border: 1px solid var(--bb);
+      border-radius: 22px; padding: 28px 26px;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .feat-card:hover {
+      border-color: rgba(0,163,255,.38);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,163,255,.09);
+    }
+    .feat-icon {
+      width: 50px; height: 50px; border-radius: 14px;
+      background: rgba(0,163,255,.07); border: 1px solid rgba(0,163,255,.15);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; box-shadow: 0 0 18px rgba(0,163,255,.11);
+    }
+    .feat-card h3 { font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: -.2px; margin-bottom: 8px; }
+    .feat-card p  { font-size: 14px; color: var(--w55); line-height: 1.65; }
+
+    /* ─── mini features (HabitKit-style 9-block) ─── */
+    .mini-feats { padding: 0 24px 88px; }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .mini-card {
+      background: var(--w04); border: 1px solid var(--w08);
+      border-radius: 16px; padding: 18px 16px;
+      transition: background .2s, border-color .2s;
+    }
+    .mini-card:hover { background: var(--w08); border-color: rgba(0,163,255,.2); }
+    .mini-card-icon { font-size: 22px; margin-bottom: 10px; }
+    .mini-card h4 { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .mini-card p  { font-size: 12px; color: var(--w35); line-height: 1.55; }
+
+    /* ─── CTA strip ─── */
+    .cta-strip { padding: 88px 24px; text-align: center; }
+    .cta-strip h2 {
+      font-size: clamp(26px, 4vw, 40px); font-weight: 800;
+      color: var(--white); letter-spacing: -.6px; margin-bottom: 12px;
+    }
+    .cta-strip p { font-size: 16px; color: var(--w55); margin-bottom: 42px; }
+
+    /* ─── footer ─── */
+    footer {
+      border-top: 1px solid var(--w06);
+      padding: 52px 24px 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-col .logo { margin-bottom: 14px; }
+    .footer-brand-col .logo img { width: 26px; height: 26px; border-radius: 6px; }
+    .footer-brand-col p { font-size: 13px; color: var(--w35); line-height: 1.65; max-width: 220px; }
+    .footer-col h5 {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--w35); margin-bottom: 14px;
+    }
+    .footer-col ul { list-style: none; padding: 0; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      font-size: 14px; color: var(--w55);
+      text-decoration: none; transition: color .15s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--w06); padding-top: 24px;
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 12px;
+    }
+    .footer-bottom p { font-size: 13px; color: var(--w35); }
+    .footer-bottom a { color: var(--blue-end); text-decoration: none; }
+    .footer-bottom a:hover { text-decoration: underline; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 8px;
+      background: var(--w06); color: var(--w55); text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .footer-social a:hover { background: var(--w12); color: var(--white); }
+
+    /* ─── responsive ─── */
+    @media (max-width: 860px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      h1 { letter-spacing: -1.2px; }
+      .hero { padding: 80px 20px 60px; }
+      nav a:not(.cta) { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-brand-col p { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="wrap">
+    <div class="header-row">
+
+      <a href="/" class="logo" aria-label="SIP home">
+        <img src="sip-icon-1024.png" alt="SIP">
+        <span class="logo-name">SIP</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#features" data-i18n="nav_features">Features</a>
+        <a href="privacy.html" data-i18n="nav_privacy">Privacy</a>
+        <a href="tos.html" data-i18n="nav_terms">Terms</a>
+        <div class="nav-social">
+          <a href="https://linkedin.com/in/elojaa6" aria-label="Elvis on LinkedIn" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://instagram.com/elojaa_6/" class="profile-link profile-link-social" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+        </div>
+        <a href="contact.html" class="cta" style="margin-left:4px;" data-i18n="nav_contact">Contact</a>
+        <!-- Language switcher -->
+        <button class="lang-btn" onclick="toggleLang()" aria-label="Switch language" id="lang-btn">ES</button>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<main>
+  <section class="hero">
+    <div class="wrap-sm">
+
+      <div class="eyebrow" aria-hidden="true">
+        <span class="eyebrow-dot"></span>
+        <span class="eyebrow-text" data-i18n="hero_eyebrow">Smart Intake Progress</span>
+      </div>
+
+      <h1 data-i18n="hero_h1">Precision Hydration<br><span class="gradient-text">for Elite Athletes.</span></h1>
+
+      <p class="hero-sub" data-i18n="hero_sub">
+        Recalibrate your performance with smart intelligence. Real-time climate,
+        activity, and wearable data — unified in one precision tool.
+      </p>
+
+      <div class="hero-ctas">
+        <!-- App Store button hidden — not yet published -->
+        <a href="#" class="btn btn-primary" aria-label="Get it on Google Play">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3.18 23.76c.41.23.87.22 1.28-.01l10.82-6.17-2.33-2.36-9.77 8.54zM.27 1.12C.1 1.44 0 1.82 0 2.26v19.48c0 .44.1.82.27 1.14l.09.08 10.91-10.9v-.26L.36 1.04l-.09.08zM17.79 9.36l-2.94-1.67-2.77 2.77 2.77 2.77 2.96-1.68c.84-.48.84-1.7-.02-2.19zM4.46.25L15.28 6.42 12.95 8.75 3.18.21C3.59-.02 4.05-.02 4.46.25z"/>
+          </svg>
+          <span data-i18n="hero_cta_play">Google Play</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ══════════ MAIN FEATURES ══════════ -->
+  <section class="features" id="features" aria-labelledby="feat-title">
+    <div class="wrap">
+      <p class="sec-label" data-i18n="feat_label">Why SIP</p>
+      <h2 id="feat-title" class="sec-title" data-i18n="feat_title">Every edge, tracked.</h2>
+
+      <div class="feat-grid">
+
+        <article class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A3FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+            </svg>
+          </div>
+          <h3 data-i18n="feat1_title">Smart Adjustment</h3>
+          <p data-i18n="feat1_desc">Goal recalibration based on real-time climate and altitude. Your target adapts to the environment you're actually in.</p>
+        </article>
+
+        <article class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A3FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3 data-i18n="feat2_title">Performance Mode</h3>
+          <p data-i18n="feat2_desc">Sync with wearables to adapt hydration based on exercise intensity, heart rate, and real caloric expenditure.</p>
+        </article>
+
+        <article class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A3FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <rect x="14" y="3" width="7" height="7" rx="1"/>
+              <rect x="3" y="14" width="7" height="7" rx="1"/>
+              <rect x="14" y="14" width="7" height="7" rx="1"/>
+            </svg>
+          </div>
+          <h3 data-i18n="feat3_title">Unlimited Library</h3>
+          <p data-i18n="feat3_desc">Create infinite custom beverages with precise hydration coefficients. From espresso to electrolyte drinks — all tracked.</p>
+        </article>
+
+        <article class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A3FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6"  y1="20" x2="6"  y2="14"/>
+            </svg>
+          </div>
+          <h3 data-i18n="feat4_title">Full Insights</h3>
+          <p data-i18n="feat4_desc">Unlimited history, monthly efficiency heatmaps, and progress trends. Know your consistency in full detail.</p>
+        </article>
+
+        <article class="feat-card">
+          <div class="feat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00A3FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"/>
+              <polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </div>
+          <h3 data-i18n="feat5_title">Seamless Sync</h3>
+          <p data-i18n="feat5_desc">Your data is securely synced across devices via Firebase. Consistent experience everywhere, always encrypted.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ══════════ MINI FEATURES (HabitKit-style 9-block) ══════════ -->
+  <section class="mini-feats" aria-labelledby="mini-title">
+    <div class="wrap">
+      <p class="sec-label" style="text-align:center; padding-top: 88px;" data-i18n="mini_label">Built for Athletes</p>
+      <h2 id="mini-title" class="sec-title" data-i18n="mini_title">Everything you need.</h2>
+
+      <div class="mini-grid">
+        <div class="mini-card"><div class="mini-card-icon">🎯</div><h4 data-i18n="mini1_title">Personalized Goals</h4><p data-i18n="mini1_desc">Formula based on age, weight, gender &amp; activity.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">🌡️</div><h4 data-i18n="mini2_title">Climate Sensor</h4><p data-i18n="mini2_desc">Heat &amp; altitude add to your target automatically.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">⌚</div><h4 data-i18n="mini3_title">Wearable Sync</h4><p data-i18n="mini3_desc">Apple Health &amp; Health Connect integration.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">🔔</div><h4 data-i18n="mini4_title">Smart Reminders</h4><p data-i18n="mini4_desc">Pause during sleep. Fire at optimal windows.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">🏅</div><h4 data-i18n="mini5_title">Streaks &amp; Rewards</h4><p data-i18n="mini5_desc">Milestones that keep you consistent long-term.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">📊</div><h4 data-i18n="mini6_title">Heatmap Calendar</h4><p data-i18n="mini6_desc">Monthly efficiency at a glance.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">🧪</div><h4 data-i18n="mini7_title">Hydration Coefficients</h4><p data-i18n="mini7_desc">Coffee, beer, juice — all calculated precisely.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">📤</div><h4 data-i18n="mini8_title">CSV Export</h4><p data-i18n="mini8_desc">Share your full history with coaches or doctors.</p></div>
+        <div class="mini-card"><div class="mini-card-icon">☁️</div><h4 data-i18n="mini9_title">Cloud Backup</h4><p data-i18n="mini9_desc">Encrypted sync across all your devices.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- ══════════ CTA STRIP ══════════ -->
+  <section class="cta-strip">
+    <div class="wrap-sm">
+      <h2 data-i18n="cta_h2">Hydrate with precision.<br>Perform at your peak.</h2>
+      <p data-i18n="cta_sub">Join athletes who track smarter, not just harder.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <a href="#" class="btn btn-primary" data-i18n="cta_download">Download Free</a>
+        <a href="contact.html" class="btn btn-outline" data-i18n="cta_contact">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-brand-col">
+        <a href="/" class="logo" aria-label="SIP home">
+          <img src="sip-icon-1024.png" alt="SIP">
+          <span class="logo-name">SIP</span>
+        </a>
+        <p data-i18n="footer_tagline">Smart Intake Progress — precision hydration intelligence for high-performance athletes.</p>
+      </div>
+
+      <!-- Features -->
+      <div class="footer-col">
+        <h5 data-i18n="footer_features">Features</h5>
+        <ul>
+          <li><a href="#features" data-i18n="feat1_title">Smart Adjustment</a></li>
+          <li><a href="#features" data-i18n="feat2_title">Performance Mode</a></li>
+          <li><a href="#features" data-i18n="feat4_title">Full Insights</a></li>
+          <li><a href="#features" data-i18n="feat5_title">Seamless Sync</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="footer-col">
+        <h5 data-i18n="footer_legal">Legal</h5>
+        <ul>
+          <li><a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a></li>
+          <li><a href="tos.html" data-i18n="nav_terms">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div class="footer-col">
+        <h5 data-i18n="footer_connect">Connect</h5>
+        <ul>
+          <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+          <li><a href="https://linkedin.com/in/elojaa6" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://instagram.com/elojaa_6/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" data-i18n="footer_googleplay">Google Play</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p data-i18n="footer_copy">Made with ❤️ by <a href="mailto:elvisloja@gmail.com">Elvis Loja</a> &nbsp;·&nbsp; © 2026 SIP. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/elojaa6" aria-label="Elvis on LinkedIn" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/elojaa_6/" aria-label="Elvis on Instagram" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ i18n ENGINE ══════════ -->
+<script>
+  const TRANSLATIONS = {
+    en: {
+      nav_features:    'Features',
+      nav_privacy:     'Privacy',
+      nav_terms:       'Terms',
+      nav_contact:     'Contact',
+      hero_eyebrow:    'Smart Intake Progress',
+      hero_h1:         'Precision Hydration<br><span class="gradient-text">for Elite Athletes.</span>',
+      hero_sub:        'Recalibrate your performance with smart intelligence. Real-time climate, activity, and wearable data — unified in one precision tool.',
+      hero_cta_play:   'Google Play',
+      feat_label:      'Why SIP',
+      feat_title:      'Every edge, tracked.',
+      feat1_title:     'Smart Adjustment',
+      feat1_desc:      "Goal recalibration based on real-time climate and altitude. Your target adapts to the environment you're actually in.",
+      feat2_title:     'Performance Mode',
+      feat2_desc:      'Sync with wearables to adapt hydration based on exercise intensity, heart rate, and real caloric expenditure.',
+      feat3_title:     'Unlimited Library',
+      feat3_desc:      'Create infinite custom beverages with precise hydration coefficients. From espresso to electrolyte drinks — all tracked.',
+      feat4_title:     'Full Insights',
+      feat4_desc:      'Unlimited history, monthly efficiency heatmaps, and progress trends. Know your consistency in full detail.',
+      feat5_title:     'Seamless Sync',
+      feat5_desc:      'Your data is securely synced across devices via Firebase. Consistent experience everywhere, always encrypted.',
+      mini_label:      'Built for Athletes',
+      mini_title:      'Everything you need.',
+      mini1_title:     'Personalized Goals',
+      mini1_desc:      'Formula based on age, weight, gender & activity.',
+      mini2_title:     'Climate Sensor',
+      mini2_desc:      'Heat & altitude add to your target automatically.',
+      mini3_title:     'Wearable Sync',
+      mini3_desc:      'Apple Health & Health Connect integration.',
+      mini4_title:     'Smart Reminders',
+      mini4_desc:      'Pause during sleep. Fire at optimal windows.',
+      mini5_title:     'Streaks & Rewards',
+      mini5_desc:      'Milestones that keep you consistent long-term.',
+      mini6_title:     'Heatmap Calendar',
+      mini6_desc:      'Monthly efficiency at a glance.',
+      mini7_title:     'Hydration Coefficients',
+      mini7_desc:      'Coffee, beer, juice — all calculated precisely.',
+      mini8_title:     'CSV Export',
+      mini8_desc:      'Share your full history with coaches or doctors.',
+      mini9_title:     'Cloud Backup',
+      mini9_desc:      'Encrypted sync across all your devices.',
+      cta_h2:          'Hydrate with precision.<br>Perform at your peak.',
+      cta_sub:         'Join athletes who track smarter, not just harder.',
+      cta_download:    'Download Free',
+      cta_contact:     'Contact Us',
+      footer_tagline:  'Smart Intake Progress — precision hydration intelligence for high-performance athletes.',
+      footer_features: 'Features',
+      footer_legal:    'Legal',
+      footer_connect:  'Connect',
+      footer_googleplay:'Google Play',
+      footer_copy:     'Made with ❤️ by <a href="mailto:elvisloja@gmail.com">Elvis Loja</a> &nbsp;·&nbsp; © 2026 SIP. All rights reserved.',
+    },
+    es: {
+      nav_features:    'Funciones',
+      nav_privacy:     'Privacidad',
+      nav_terms:       'Términos',
+      nav_contact:     'Contacto',
+      hero_eyebrow:    'Progreso Inteligente de Hidratación',
+      hero_h1:         'Hidratación de Precisión<br><span class="gradient-text">para Atletas de Élite.</span>',
+      hero_sub:        'Recalibra tu rendimiento con inteligencia avanzada. Datos de clima, actividad y wearables — unidos en una sola herramienta de precisión.',
+      hero_cta_play:   'Google Play',
+      feat_label:      'Por qué SIP',
+      feat_title:      'Cada ventaja, rastreada.',
+      feat1_title:     'Ajuste Inteligente',
+      feat1_desc:      'Recalibración de objetivos basada en clima y altitud en tiempo real. Tu meta se adapta al entorno en el que estás.',
+      feat2_title:     'Modo Rendimiento',
+      feat2_desc:      'Sincroniza con wearables para adaptar la hidratación según intensidad de ejercicio, frecuencia cardíaca y gasto calórico real.',
+      feat3_title:     'Biblioteca Ilimitada',
+      feat3_desc:      'Crea bebidas personalizadas con coeficientes de hidratación precisos. Desde espresso hasta bebidas electrolíticas — todo registrado.',
+      feat4_title:     'Estadísticas Completas',
+      feat4_desc:      'Historial ilimitado, mapas de calor mensuales y tendencias de progreso. Conoce tu consistencia en detalle.',
+      feat5_title:     'Sincronización Total',
+      feat5_desc:      'Tus datos se sincronizan de forma segura entre dispositivos mediante Firebase. Experiencia consistente, siempre encriptada.',
+      mini_label:      'Diseñado para Atletas',
+      mini_title:      'Todo lo que necesitas.',
+      mini1_title:     'Metas Personalizadas',
+      mini1_desc:      'Fórmula basada en edad, peso, género y actividad.',
+      mini2_title:     'Sensor Climático',
+      mini2_desc:      'Calor y altitud incrementan tu meta automáticamente.',
+      mini3_title:     'Sincronización de Wearables',
+      mini3_desc:      'Integración con Apple Health y Health Connect.',
+      mini4_title:     'Recordatorios Inteligentes',
+      mini4_desc:      'Pausa durante el sueño. Dispara en ventanas óptimas.',
+      mini5_title:     'Rachas y Recompensas',
+      mini5_desc:      'Hitos que te mantienen constante a largo plazo.',
+      mini6_title:     'Calendario de Calor',
+      mini6_desc:      'Eficiencia mensual de un vistazo.',
+      mini7_title:     'Coeficientes de Hidratación',
+      mini7_desc:      'Café, cerveza, jugo — todo calculado con precisión.',
+      mini8_title:     'Exportar CSV',
+      mini8_desc:      'Comparte tu historial completo con entrenadores o médicos.',
+      mini9_title:     'Copia en la Nube',
+      mini9_desc:      'Sincronización encriptada en todos tus dispositivos.',
+      cta_h2:          'Hidrátate con precisión.<br>Rinde al máximo.',
+      cta_sub:         'Únete a atletas que entrenan con inteligencia, no solo con esfuerzo.',
+      cta_download:    'Descargar Gratis',
+      cta_contact:     'Contáctanos',
+      footer_tagline:  'Smart Intake Progress — inteligencia de hidratación de precisión para atletas de alto rendimiento.',
+      footer_features: 'Funciones',
+      footer_legal:    'Legal',
+      footer_connect:  'Contacto',
+      footer_googleplay:'Google Play',
+      footer_copy:     'Hecho con ❤️ por <a href="mailto:elvisloja@gmail.com">Elvis Loja</a> &nbsp;·&nbsp; © 2026 SIP. Todos los derechos reservados.',
+    }
+  };
+
+  let currentLang = localStorage.getItem('sip_lang') || 'en';
+
+  function applyLang(lang) {
+    const t = TRANSLATIONS[lang];
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('lang-btn').textContent = lang === 'en' ? 'ES' : 'EN';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    localStorage.setItem('sip_lang', currentLang);
+    applyLang(currentLang);
+  }
+
+  // Apply on load
+  applyLang(currentLang);
+</script>
+
+</body>
+</html>

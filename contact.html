@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — SIP</title>
+  <meta name="description" content="Get in touch with Elvis Loja, the developer behind SIP — Smart Intake Progress.">
+
+  <link rel="icon" href="sip-icon-1024.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #0B111F;
+      --navy-card:  #1A2235;
+      --blue-start: #0066FF;
+      --blue-end:   #00A3FF;
+      --white:      #FFFFFF;
+      --w80:  rgba(255,255,255,0.80);
+      --w55:  rgba(255,255,255,0.55);
+      --w35:  rgba(255,255,255,0.35);
+      --w12:  rgba(255,255,255,0.12);
+      --w08:  rgba(255,255,255,0.08);
+      --w06:  rgba(255,255,255,0.06);
+      --w04:  rgba(255,255,255,0.04);
+      --glow: rgba(0,163,255,0.28);
+      --bb:   rgba(0,163,255,0.16);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--navy); color: var(--w80);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── header ─── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11,17,31,.88);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--w06);
+    }
+    .hdr { max-width:1100px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:68px; }
+    .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .logo img { width:32px; height:32px; border-radius:8px; display:block; }
+    .logo-name { font-size:20px; font-weight:900; color:var(--white); letter-spacing:-0.5px; }
+    .back { font-size:14px; font-weight:500; color:var(--w55); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .15s; padding:6px 12px; border-radius:8px; }
+    .back:hover { color:var(--white); background:var(--w06); }
+
+    /* ─── main layout ─── */
+    .page { max-width: 900px; margin: 0 auto; padding: 72px 24px 80px; }
+
+    /* ─── hero eyebrow ─── */
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,163,255,.07); border: 1px solid rgba(0,163,255,.22);
+      border-radius: 50px; padding: 6px 16px; margin-bottom: 28px;
+    }
+    .eyebrow-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue-end); box-shadow: 0 0 8px var(--blue-end);
+      animation: pdot 2.8s ease-in-out infinite;
+    }
+    @keyframes pdot {
+      0%,100% { opacity:1; box-shadow: 0 0 8px var(--blue-end); }
+      50%      { opacity:.5; box-shadow: 0 0 16px var(--blue-end); }
+    }
+    .eyebrow-text { font-size:12px; font-weight:700; color:var(--blue-end); letter-spacing:1.2px; text-transform:uppercase; }
+
+    .page-title {
+      font-size: clamp(34px, 5vw, 52px); font-weight: 900;
+      color: var(--white); letter-spacing: -1.2px; line-height: 1.05;
+      margin-bottom: 14px;
+    }
+    .page-sub {
+      font-size: 17px; color: var(--w55); line-height: 1.65;
+      max-width: 480px; margin-bottom: 52px;
+    }
+
+    /* ─── profile card ─── */
+    .profile-card {
+      background: var(--navy-card); border: 1px solid var(--bb);
+      border-radius: 28px; padding: 40px;
+      display: flex; gap: 36px; align-items: flex-start;
+      margin-bottom: 28px;
+      box-shadow: 0 0 40px rgba(0,163,255,.06);
+    }
+    .profile-photo-wrap {
+      flex-shrink: 0; position: relative;
+    }
+    .profile-photo {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid rgba(0,163,255,.3);
+      box-shadow: 0 0 0 6px rgba(0,163,255,.07);
+      display: block;
+    }
+    .profile-status {
+      position: absolute; bottom: 4px; right: 4px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #22C55E;
+      border: 2.5px solid var(--navy-card);
+      box-shadow: 0 0 8px rgba(34,197,94,.5);
+    }
+    .profile-info { flex: 1; }
+    .profile-name { font-size: 22px; font-weight: 800; color: var(--white); letter-spacing: -.4px; margin-bottom: 4px; }
+    .profile-role { font-size: 14px; color: var(--blue-end); font-weight: 600; letter-spacing: .2px; margin-bottom: 16px; }
+    .profile-bio { font-size: 15px; color: var(--w55); line-height: 1.7; margin-bottom: 24px; }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .profile-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      padding: 8px 16px; border-radius: 50px;
+      transition: background .18s, border-color .18s, transform .15s;
+    }
+    .profile-link:hover { transform: translateY(-1px); }
+    .profile-link-email {
+      background: linear-gradient(95deg, var(--blue-start), var(--blue-end));
+      color: var(--white);
+      box-shadow: 0 4px 16px var(--glow);
+    }
+    .profile-link-email:hover { box-shadow: 0 8px 24px rgba(0,163,255,.42); }
+    .profile-link-social {
+      background: var(--w04); border: 1px solid var(--w12);
+      color: var(--w80);
+    }
+    .profile-link-social:hover { background: var(--w08); border-color: rgba(0,163,255,.3); }
+
+    /* ─── contact info cards ─── */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
+    .info-card {
+      background: var(--w04); border: 1px solid var(--w08);
+      border-radius: 18px; padding: 22px;
+      transition: background .2s, border-color .2s;
+    }
+    .info-card:hover { background: var(--w08); border-color: rgba(0,163,255,.2); }
+    .info-card-icon { font-size: 22px; margin-bottom: 12px; }
+    .info-card-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--w35); margin-bottom: 6px; }
+    .info-card-value { font-size: 15px; font-weight: 600; color: var(--white); }
+    .info-card-value a { color: var(--blue-end); text-decoration: none; }
+    .info-card-value a:hover { text-decoration: underline; }
+    .info-card-sub { font-size: 13px; color: var(--w35); margin-top: 4px; }
+
+    /* ─── footer ─── */
+    footer {
+      border-top: 1px solid var(--w06); padding: 24px;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: var(--w35); }
+    footer a { color: var(--blue-end); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ─── responsive ─── */
+    @media (max-width: 640px) {
+      .profile-card { flex-direction: column; align-items: center; text-align: center; padding: 28px 22px; gap: 22px; }
+      .profile-links { justify-content: center; }
+      .info-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="hdr">
+    <a href="index.html" class="logo">
+      <img src="sip-icon-1024.png" alt="SIP">
+      <span class="logo-name">SIP</span>
+    </a>
+    <a href="index.html" class="back" aria-label="Back to home">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back
+    </a>
+  </div>
+</header>
+
+<!-- ══════════ MAIN ══════════ -->
+<main>
+  <div class="page">
+
+    <div class="eyebrow" aria-hidden="true">
+      <span class="eyebrow-dot"></span>
+      <span class="eyebrow-text">Get in Touch</span>
+    </div>
+
+    <h1 class="page-title">Say hello.</h1>
+    <p class="page-sub">Have a question, feedback, or feature idea? I'd love to hear from you — I personally read every message.</p>
+
+    <!-- ── Profile card ── -->
+    <div class="profile-card">
+      <div class="profile-photo-wrap">
+        <img src="my.jpeg" alt="Elvis Loja" class="profile-photo">
+        <div class="profile-status" title="Available"></div>
+      </div>
+      <div class="profile-info">
+        <p class="profile-name">Elvis Loja</p>
+        <p class="profile-role">Indie Developer &amp; Creator of SIP</p>
+        <p class="profile-bio">
+          I'm a mobile developer based in Ecuador, building tools that help people perform at their best.
+          SIP started as a personal project to bring real athletic-grade hydration science to a simple,
+          beautiful app. I ship every update, answer every email, and care deeply about getting the details right.
+        </p>
+        <div class="profile-links">
+          <a href="mailto:elvisloja@gmail.com" class="profile-link profile-link-email">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            elvisloja@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/elojaa6" class="profile-link profile-link-social" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://instagram.com/elojaa_6/" class="profile-link profile-link-social" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Info cards ── -->
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-icon">✉️</div>
+        <p class="info-card-label">Email</p>
+        <p class="info-card-value"><a href="mailto:elvisloja@gmail.com">elvisloja@gmail.com</a></p>
+        <p class="info-card-sub">I reply within 1–2 business days.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🌎</div>
+        <p class="info-card-label">Based in</p>
+        <p class="info-card-value">Ecuador</p>
+        <p class="info-card-sub">UTC−5 · Available Mon–Fri</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">💬</div>
+        <p class="info-card-label">Best for</p>
+        <p class="info-card-value">Feedback &amp; Bug Reports</p>
+        <p class="info-card-sub">Use the in-app feedback form for fastest response.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🚀</div>
+        <p class="info-card-label">App</p>
+        <p class="info-card-value"><a href="https://play.google.com/store" target="_blank" rel="noopener">SIP on Google Play</a></p>
+        <p class="info-card-sub">Precision hydration for athletes.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <p>© 2026 SIP by <a href="mailto:elvisloja@gmail.com">Elvis Loja</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="tos.html">Terms</a></p>
+</footer>
+
+</body>
+</html>

@@ -44,6 +44,16 @@
     .logo span { font-size:18px; font-weight:900; color:var(--white); letter-spacing:-.4px; }
     .back { font-size:13px; font-weight:500; color:var(--w40); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .15s; }
     .back:hover { color:var(--w85); }
+    .lang-btn {
+      display: inline-flex; align-items: center;
+      font-size: 12px; font-weight: 700; letter-spacing: .8px;
+      color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 5px 10px; cursor: pointer; margin-left: 6px;
+      transition: color .15s, background .15s, border-color .15s;
+      user-select: none;
+    }
+    .lang-btn:hover { color: #fff; background: rgba(255,255,255,0.08); border-color: rgba(0,163,255,.3); }
 
     /* document */
     .doc { max-width:740px; margin:56px auto 80px; padding:0 24px; }
@@ -117,16 +127,17 @@
     </a>
     <a href="index.html" class="back">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      Back to home
+      <span data-i18n="back">Back to home</span>
     </a>
+    <button class="lang-btn" onclick="toggleLang()" aria-label="Switch language" id="lang-btn">ES</button>
   </div>
 </header>
 
 <main>
   <div class="doc">
     <div class="doc-head">
-      <p class="lbl">Legal</p>
-      <h1>Privacy Policy</h1>
+      <p class="lbl" data-i18n="doc_label">Legal</p>
+      <h1 data-i18n="doc_title">Privacy Policy</h1>
       <p class="meta">Effective date: May 13, 2026 &nbsp;·&nbsp; Last updated: May 13, 2026</p>
     </div>
 
@@ -436,10 +447,91 @@
 <footer>
   <p>
     <a href="index.html">SIP</a> &nbsp;·&nbsp;
-    <a href="tos.html">Terms of Service</a> &nbsp;·&nbsp;
-    © 2026 Elvis Loja. All rights reserved.
+    <a href="tos.html" data-i18n="footer_tos">Terms of Service</a> &nbsp;·&nbsp;
+    <span data-i18n="footer_copy">© 2026 Elvis Loja. All rights reserved.</span>
   </p>
 </footer>
+
+<script>
+  const TRANSLATIONS = {
+    en: {
+      back:       'Back to home',
+      doc_label:  'Legal',
+      doc_title:  'Privacy Policy',
+      footer_tos: 'Terms of Service',
+      footer_copy:'© 2026 Elvis Loja. All rights reserved.',
+      sections: [
+        '1. Introduction and Data Controller',
+        '2. Data We Collect',
+        '3. Contact Data Processing',
+        '4. Contract Processing &amp; Third-Party Services',
+        '5. Health Data Transparency',
+        '6. Security and International Data Transfers',
+        '7. Data Retention',
+        '8. Your Rights as a Data Subject',
+        '9. Right to Object',
+        '10. Children\'s Privacy',
+        '11. Changes to This Policy',
+        '12. Contact',
+      ],
+      subsections: [
+        '2.1 Data you provide directly',
+        '2.2 Data collected automatically',
+      ],
+    },
+    es: {
+      back:       'Volver al inicio',
+      doc_label:  'Legal',
+      doc_title:  'Política de Privacidad',
+      footer_tos: 'Términos de Servicio',
+      footer_copy:'© 2026 Elvis Loja. Todos los derechos reservados.',
+      sections: [
+        '1. Introducción y Responsable del Tratamiento',
+        '2. Datos que Recopilamos',
+        '3. Tratamiento de Datos de Contacto',
+        '4. Procesamiento Contractual y Servicios de Terceros',
+        '5. Transparencia en Datos de Salud',
+        '6. Seguridad y Transferencias Internacionales',
+        '7. Retención de Datos',
+        '8. Tus Derechos como Titular de Datos',
+        '9. Derecho de Oposición',
+        '10. Privacidad de Menores',
+        '11. Cambios en Esta Política',
+        '12. Contacto',
+      ],
+      subsections: [
+        '2.1 Datos que proporcionas directamente',
+        '2.2 Datos recopilados automáticamente',
+      ],
+    }
+  };
+
+  let currentLang = localStorage.getItem('sip_lang') || 'en';
+
+  function applyLang(lang) {
+    const t = TRANSLATIONS[lang];
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('lang-btn').textContent = lang === 'en' ? 'ES' : 'EN';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('.sec h2').forEach((el, i) => {
+      if (t.sections[i]) el.textContent = t.sections[i];
+    });
+    document.querySelectorAll('.sec h3').forEach((el, i) => {
+      if (t.subsections[i]) el.textContent = t.subsections[i];
+    });
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    localStorage.setItem('sip_lang', currentLang);
+    applyLang(currentLang);
+  }
+
+  applyLang(currentLang);
+</script>
 
 </body>
 </html>

@@ -53,6 +53,18 @@
     .back { font-size:14px; font-weight:500; color:var(--w55); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .15s; padding:6px 12px; border-radius:8px; }
     .back:hover { color:var(--white); background:var(--w06); }
 
+    /* ─── lang switcher ─── */
+    .lang-btn {
+      display: inline-flex; align-items: center;
+      font-size: 12px; font-weight: 700; letter-spacing: .8px;
+      color: var(--w55); background: var(--w04);
+      border: 1px solid var(--w08); border-radius: 8px;
+      padding: 5px 10px; cursor: pointer; margin-left: 6px;
+      transition: color .15s, background .15s, border-color .15s;
+      user-select: none;
+    }
+    .lang-btn:hover { color: var(--white); background: var(--w08); border-color: rgba(0,163,255,.3); }
+
     /* ─── main layout ─── */
     .page { max-width: 900px; margin: 0 auto; padding: 72px 24px 80px; }
 
@@ -177,8 +189,9 @@
     </a>
     <a href="index.html" class="back" aria-label="Back to home">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      Back
+      <span data-i18n="back">Back</span>
     </a>
+    <button class="lang-btn" onclick="toggleLang()" aria-label="Switch language" id="lang-btn">ES</button>
   </div>
 </header>
 
@@ -188,11 +201,11 @@
 
     <div class="eyebrow" aria-hidden="true">
       <span class="eyebrow-dot"></span>
-      <span class="eyebrow-text">Get in Touch</span>
+      <span class="eyebrow-text" data-i18n="eyebrow">Get in Touch</span>
     </div>
 
-    <h1 class="page-title">Say hello.</h1>
-    <p class="page-sub">Have a question, feedback, or feature idea? I'd love to hear from you — I personally read every message.</p>
+    <h1 class="page-title" data-i18n="page_title">Say hello.</h1>
+    <p class="page-sub" data-i18n="page_sub">Have a question, feedback, or feature idea? I'd love to hear from you — I personally read every message.</p>
 
     <!-- ── Profile card ── -->
     <div class="profile-card">
@@ -202,8 +215,8 @@
       </div>
       <div class="profile-info">
         <p class="profile-name">Elvis Loja</p>
-        <p class="profile-role">Indie Developer &amp; Creator of SIP</p>
-        <p class="profile-bio">
+        <p class="profile-role" data-i18n="profile_role">Indie Developer &amp; Creator of SIP</p>
+        <p class="profile-bio" data-i18n="profile_bio">
           I'm a mobile developer based in Ecuador, building tools that help people perform at their best.
           SIP started as a personal project to bring real athletic-grade hydration science to a simple,
           beautiful app. I ship every update, answer every email, and care deeply about getting the details right.
@@ -229,27 +242,27 @@
     <div class="info-grid">
       <div class="info-card">
         <div class="info-card-icon">✉️</div>
-        <p class="info-card-label">Email</p>
+        <p class="info-card-label" data-i18n="info_email_label">Email</p>
         <p class="info-card-value"><a href="mailto:elvisloja@gmail.com">elvisloja@gmail.com</a></p>
-        <p class="info-card-sub">I reply within 1–2 business days.</p>
+        <p class="info-card-sub" data-i18n="info_email_sub">I reply within 1–2 business days.</p>
       </div>
       <div class="info-card">
         <div class="info-card-icon">🌎</div>
-        <p class="info-card-label">Based in</p>
+        <p class="info-card-label" data-i18n="info_location_label">Based in</p>
         <p class="info-card-value">Ecuador</p>
-        <p class="info-card-sub">UTC−5 · Available Mon–Fri</p>
+        <p class="info-card-sub" data-i18n="info_location_sub">UTC−5 · Available Mon–Fri</p>
       </div>
       <div class="info-card">
         <div class="info-card-icon">💬</div>
-        <p class="info-card-label">Best for</p>
-        <p class="info-card-value">Feedback &amp; Bug Reports</p>
-        <p class="info-card-sub">Use the in-app feedback form for fastest response.</p>
+        <p class="info-card-label" data-i18n="info_best_label">Best for</p>
+        <p class="info-card-value" data-i18n="info_best_value">Feedback &amp; Bug Reports</p>
+        <p class="info-card-sub" data-i18n="info_best_sub">Use the in-app feedback form for fastest response.</p>
       </div>
       <div class="info-card">
         <div class="info-card-icon">🚀</div>
-        <p class="info-card-label">App</p>
+        <p class="info-card-label" data-i18n="info_app_label">App</p>
         <p class="info-card-value"><a href="https://play.google.com/store" target="_blank" rel="noopener">SIP on Google Play</a></p>
-        <p class="info-card-sub">Precision hydration for athletes.</p>
+        <p class="info-card-sub" data-i18n="info_app_sub">Precision hydration for athletes.</p>
       </div>
     </div>
 
@@ -258,8 +271,73 @@
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer>
-  <p>© 2026 SIP by <a href="mailto:elvisloja@gmail.com">Elvis Loja</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="tos.html">Terms</a></p>
+  <p><span data-i18n="footer_copy">© 2026 SIP by <a href="mailto:elvisloja@gmail.com">Elvis Loja</a></span> &nbsp;·&nbsp; <a href="privacy.html" data-i18n="footer_privacy">Privacy</a> &nbsp;·&nbsp; <a href="tos.html" data-i18n="footer_terms">Terms</a></p>
 </footer>
+
+<script>
+  const TRANSLATIONS = {
+    en: {
+      back:               'Back',
+      eyebrow:            'Get in Touch',
+      page_title:         'Say hello.',
+      page_sub:           "Have a question, feedback, or feature idea? I'd love to hear from you — I personally read every message.",
+      profile_role:       'Indie Developer &amp; Creator of SIP',
+      profile_bio:        "I'm a mobile developer based in Ecuador, building tools that help people perform at their best. SIP started as a personal project to bring real athletic-grade hydration science to a simple, beautiful app. I ship every update, answer every email, and care deeply about getting the details right.",
+      info_email_label:   'Email',
+      info_email_sub:     'I reply within 1–2 business days.',
+      info_location_label:'Based in',
+      info_location_sub:  'UTC−5 · Available Mon–Fri',
+      info_best_label:    'Best for',
+      info_best_value:    'Feedback &amp; Bug Reports',
+      info_best_sub:      'Use the in-app feedback form for fastest response.',
+      info_app_label:     'App',
+      info_app_sub:       'Precision hydration for athletes.',
+      footer_copy:        '© 2026 SIP by <a href="mailto:elvisloja@gmail.com">Elvis Loja</a>',
+      footer_privacy:     'Privacy',
+      footer_terms:       'Terms',
+    },
+    es: {
+      back:               'Volver',
+      eyebrow:            'Contáctanos',
+      page_title:         'Di hola.',
+      page_sub:           '¿Tienes una pregunta, comentario o idea? Me encantaría escucharte — leo personalmente cada mensaje.',
+      profile_role:       'Desarrollador Indie &amp; Creador de SIP',
+      profile_bio:        'Soy un desarrollador móvil con base en Ecuador, creando herramientas que ayudan a las personas a rendir al máximo. SIP comenzó como un proyecto personal para llevar la ciencia de hidratación deportiva a una app simple y hermosa. Publico cada actualización, respondo cada correo y me preocupa profundamente cuidar los detalles.',
+      info_email_label:   'Correo',
+      info_email_sub:     'Respondo en 1–2 días hábiles.',
+      info_location_label:'Ubicación',
+      info_location_sub:  'UTC−5 · Disponible Lun–Vie',
+      info_best_label:    'Ideal para',
+      info_best_value:    'Comentarios &amp; Reportes de Errores',
+      info_best_sub:      'Usa el formulario en la app para una respuesta más rápida.',
+      info_app_label:     'App',
+      info_app_sub:       'Hidratación de precisión para atletas.',
+      footer_copy:        '© 2026 SIP por <a href="mailto:elvisloja@gmail.com">Elvis Loja</a>',
+      footer_privacy:     'Privacidad',
+      footer_terms:       'Términos',
+    }
+  };
+
+  let currentLang = localStorage.getItem('sip_lang') || 'en';
+
+  function applyLang(lang) {
+    const t = TRANSLATIONS[lang];
+    document.documentElement.setAttribute('lang', lang);
+    document.getElementById('lang-btn').textContent = lang === 'en' ? 'ES' : 'EN';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    localStorage.setItem('sip_lang', currentLang);
+    applyLang(currentLang);
+  }
+
+  applyLang(currentLang);
+</script>
 
 </body>
 </html>

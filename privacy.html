@@ -183,7 +183,7 @@
         <li>Device type and operating system version (iOS / Android).</li>
         <li>App version and build number (included in crash reports and feedback).</li>
         <li>Approximate location (used only to fetch local weather data for Smart Climate when you explicitly enable it; we do not store GPS coordinates).</li>
-        <li>Activity data (steps, heart rate, workout sessions) read from Apple Health or Google Health Connect — only when you explicitly grant Health permissions in your device settings.</li>
+        <li>Activity data (activity intensity and calories burned) read from Apple Health or Google Health Connect — only when you explicitly grant Health permissions in your device settings.</li>
         <li>Anonymous crash diagnostics (stack traces, device state) collected via Firebase Crashlytics when the App unexpectedly closes.</li>
       </ul>
     </section>
@@ -265,7 +265,7 @@
             <div class="tp-name">Apple HealthKit (iOS)</div>
             <span class="tp-basis">Art. 6(1)(a) GDPR — explicit consent</span>
             <div class="tp-desc">
-              SIP reads steps, heart rate, and workout sessions from Apple Health to refine your goal.
+              SIP reads activity intensity and calories burned from Apple Health to refine your goal.
               Access requires your explicit iOS system permission and can be revoked at any time via
               <em>iOS Settings → Health → Apps → SIP</em>. HealthKit data is read-only and never written back.
             </div>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account — SIP</title>
+  <link rel="icon" href="sip-icon-1024.png" type="image/png">
+  <meta name="description" content="How to delete your SIP account and associated data.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B111F; --border:rgba(255,255,255,0.08); --blue:#00A3FF; --white:#FFFFFF;
+      --w85:rgba(255,255,255,0.85); --w60:rgba(255,255,255,0.60); --w40:rgba(255,255,255,0.40);
+      --w08:rgba(255,255,255,0.08); --w05:rgba(255,255,255,0.05);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; background:var(--navy); color:var(--w85); -webkit-font-smoothing:antialiased; line-height:1.7; }
+
+    header { border-bottom:1px solid var(--border); background:rgba(11,17,31,.9); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); position:sticky; top:0; z-index:100; }
+    .hdr { max-width:1100px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .logo { display:flex; align-items:center; gap:9px; text-decoration:none; }
+    .logo span { font-size:18px; font-weight:900; color:var(--white); letter-spacing:-.4px; }
+    .back { font-size:13px; font-weight:500; color:var(--w40); text-decoration:none; display:flex; align-items:center; gap:6px; transition:color .15s; }
+    .back:hover { color:var(--w85); }
+    .lang-btn { display:inline-flex; align-items:center; font-size:12px; font-weight:700; letter-spacing:.8px; color:rgba(255,255,255,0.55); background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:5px 10px; cursor:pointer; margin-left:6px; transition:color .15s, background .15s, border-color .15s; user-select:none; }
+    .lang-btn:hover { color:#fff; background:rgba(255,255,255,0.08); border-color:rgba(0,163,255,.3); }
+
+    .doc { max-width:740px; margin:56px auto 80px; padding:0 24px; }
+    .doc-head { margin-bottom:48px; }
+    .lbl { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--blue); margin-bottom:12px; }
+    h1 { font-size:clamp(30px,5vw,44px); font-weight:800; color:var(--white); letter-spacing:-.8px; line-height:1.1; margin-bottom:16px; }
+    .meta { font-size:13px; color:var(--w40); }
+
+    .sec { margin-bottom:44px; }
+    .sec h2 { font-size:17px; font-weight:700; color:var(--white); letter-spacing:-.2px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--w08); }
+    .sec p { font-size:15px; color:var(--w60); margin-bottom:12px; line-height:1.75; }
+    .sec p:last-child { margin-bottom:0; }
+    .sec ol, .sec ul { padding-left:20px; color:var(--w60); font-size:15px; line-height:1.75; }
+    .sec li { margin-bottom:8px; }
+    .sec strong { color:var(--w85); }
+    .sec a { color:var(--blue); text-decoration:none; }
+    .sec a:hover { text-decoration:underline; }
+
+    .card { background:var(--w05); border:1px solid rgba(0,163,255,.15); border-radius:14px; padding:18px 20px; margin-top:16px; }
+    .card p { margin:0; font-size:14px; color:var(--w60); line-height:1.65; }
+    .card strong { color:var(--w85); }
+    .highlight { background:rgba(0,163,255,.06); border:1px solid rgba(0,163,255,.25); border-radius:14px; padding:18px 20px; margin:16px 0; }
+    .highlight p { margin:0; font-size:14px; color:var(--w60); line-height:1.65; }
+    .highlight strong { color:var(--w85); }
+
+    footer { border-top:1px solid var(--border); padding:28px 24px; text-align:center; }
+    footer p { font-size:13px; color:var(--w40); line-height:1.6; }
+    footer a { color:var(--blue); text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+
+    @media (max-width:600px) { .doc { margin-top:36px; } }
+    [hidden] { display:none !important; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hdr">
+    <a href="index.html" class="logo">
+      <img src="sip-icon-1024.png" width="28" height="28" style="border-radius:7px;display:block;" alt="SIP">
+      <span>SIP</span>
+    </a>
+    <a href="index.html" class="back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      <span id="back-label">Back to home</span>
+    </a>
+    <button class="lang-btn" onclick="toggleLang()" aria-label="Switch language" id="lang-btn">ES</button>
+  </div>
+</header>
+
+<main>
+  <!-- ENGLISH -->
+  <div class="doc" id="content-en">
+    <div class="doc-head">
+      <p class="lbl">Legal</p>
+      <h1>Delete Your Account</h1>
+      <p class="meta">SIP — Smart Intake Progress · Developer: Elvis Loja</p>
+    </div>
+
+    <section class="sec">
+      <h2>1. About this page</h2>
+      <p>This page explains how to request deletion of your account and associated data in
+      <strong>SIP</strong> (package <strong>com.elojaa6.siphydration</strong>), developed by Elvis Loja.</p>
+    </section>
+
+    <section class="sec">
+      <h2>2. Delete from within the app (recommended)</h2>
+      <ol>
+        <li>Open <strong>SIP</strong> and sign in.</li>
+        <li>Go to <strong>Settings</strong>.</li>
+        <li>Tap <strong>Delete account</strong> and confirm.</li>
+      </ol>
+      <p>Your account and associated data are deleted immediately.</p>
+    </section>
+
+    <section class="sec">
+      <h2>3. Delete by email</h2>
+      <p>If you cannot access the app, email
+      <a href="mailto:elvisloja@gmail.com">elvisloja@gmail.com</a> from the address linked to your
+      account, with the subject <em>"Delete my SIP account"</em>. We process such requests within 30 days.</p>
+    </section>
+
+    <section class="sec">
+      <h2>4. What data is deleted</h2>
+      <ul>
+        <li>Your account (email, display name, identifiers).</li>
+        <li>Your profile, goals and preferences.</li>
+        <li>Your hydration and activity history.</li>
+        <li>The subscription status linked to your account.</li>
+      </ul>
+      <div class="highlight">
+        <p>Deletion is permanent. Minimal records required by law (e.g. purchase transaction receipts)
+        may be retained for the period the applicable law requires. Crash diagnostics are automatically
+        purged within 90 days. No other data is kept.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ESPAÑOL -->
+  <div class="doc" id="content-es" hidden>
+    <div class="doc-head">
+      <p class="lbl">Legal</p>
+      <h1>Eliminar tu cuenta</h1>
+      <p class="meta">SIP — Smart Intake Progress · Desarrollador: Elvis Loja</p>
+    </div>
+
+    <section class="sec">
+      <h2>1. Sobre esta página</h2>
+      <p>Esta página explica cómo solicitar la eliminación de tu cuenta y de los datos asociados en
+      <strong>SIP</strong> (paquete <strong>com.elojaa6.siphydration</strong>), desarrollada por Elvis Loja.</p>
+    </section>
+
+    <section class="sec">
+      <h2>2. Eliminar desde la app (recomendado)</h2>
+      <ol>
+        <li>Abre <strong>SIP</strong> e inicia sesión.</li>
+        <li>Ve a <strong>Ajustes</strong>.</li>
+        <li>Pulsa <strong>Eliminar cuenta</strong> y confirma.</li>
+      </ol>
+      <p>Tu cuenta y tus datos asociados se eliminan de inmediato.</p>
+    </section>
+
+    <section class="sec">
+      <h2>3. Eliminar por correo electrónico</h2>
+      <p>Si no puedes acceder a la app, escribe a
+      <a href="mailto:elvisloja@gmail.com">elvisloja@gmail.com</a> desde el correo asociado a tu cuenta,
+      con el asunto <em>"Eliminar mi cuenta SIP"</em>. Procesamos estas solicitudes en un plazo máximo de 30 días.</p>
+    </section>
+
+    <section class="sec">
+      <h2>4. Qué datos se eliminan</h2>
+      <ul>
+        <li>Tu cuenta (correo, nombre, identificadores).</li>
+        <li>Tu perfil, metas y preferencias.</li>
+        <li>Tu historial de hidratación y de actividad.</li>
+        <li>El estado de tu suscripción asociado a la cuenta.</li>
+      </ul>
+      <div class="highlight">
+        <p>La eliminación es permanente. Algunos registros mínimos exigidos por ley (por ejemplo,
+        comprobantes de transacciones de compra) pueden conservarse el tiempo que la normativa aplicable
+        requiera. Los diagnósticos de fallos se eliminan automáticamente en un plazo de 90 días. No se
+        conserva ningún otro dato.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>
+    <a href="index.html">SIP</a> &nbsp;·&nbsp;
+    <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="tos.html">Terms of Service</a> &nbsp;·&nbsp;
+    <span>© 2026 Elvis Loja. All rights reserved.</span>
+  </p>
+</footer>
+
+<script>
+  let lang = localStorage.getItem('sip_lang') || 'en';
+  function applyLang(l) {
+    document.documentElement.setAttribute('lang', l);
+    document.getElementById('content-en').hidden = (l !== 'en');
+    document.getElementById('content-es').hidden = (l !== 'es');
+    document.getElementById('lang-btn').textContent = l === 'en' ? 'ES' : 'EN';
+    document.getElementById('back-label').textContent = l === 'en' ? 'Back to home' : 'Volver al inicio';
+  }
+  function toggleLang() { lang = lang === 'en' ? 'es' : 'en'; localStorage.setItem('sip_lang', lang); applyLang(lang); }
+  applyLang(lang);
+</script>
+
+</body>
+</html>
